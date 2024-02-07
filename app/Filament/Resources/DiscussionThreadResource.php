@@ -23,7 +23,7 @@ class DiscussionThreadResource extends Resource
 {
     protected static ?string $model = DiscussionThread::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-bottom-center-text';
 
     public static function form(Form $form): Form
     {

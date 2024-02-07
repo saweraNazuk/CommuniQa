@@ -3,30 +3,44 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Filament\Panel;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Filament\Models\Contracts\HasAvatar;
 
-class User extends Authenticatable
+// use BezhanSalleh\FilamentShield\Traits\HasPanelShield;
+
+
+class User extends Authenticatable implements HasAvatar, FilamentUser
 {
     use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
-
+    
+   
     /**
      * The attributes that are mass assignable.
      *
+     
      * @var array<int, string>
      */
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return true;
+    }
     protected $fillable = [
+        'profile_photo_path',
         'name',
         'email',
         'password',
+        'google_id',
     ];
 
     /**
@@ -58,4 +72,10 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function getFilamentAvatarUrl(): ?string
+    {
+        return $this->profile_photo_url;
+    }
 }
+
