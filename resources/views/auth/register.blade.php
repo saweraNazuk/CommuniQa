@@ -70,11 +70,11 @@
                 <span class="flex items-center  " style="border-top: 1px solid rgb(122, 114, 114); width:35%"></span> <h1 class="mx-auto " style="font-size: 8px">or continue with</h1> <span class="flex items-center " style="border-top: 1px solid rgb(97, 94, 94); width:35%"></span>
          </div>
          <div class="mx-auto flex items-center mt-5" style="width: 90%">
-             <button style="width: 90px; height:38px; border:1px solid rgb(171, 167, 167); border-radius:8px" class="mx-auto flex items-center">
+             <a href="{{ URL::to('googlelogin')}}" style="width: 90px; height:38px; border:1px solid rgb(171, 167, 167); border-radius:8px" class="mx-auto flex items-center">
                 
                  <img src="{{asset('image/google-1088004_1920.png') }}" style="width:25px" class="max-auto ms-8">
 
-             </button>
+             </a>
              <button style="width: 90px; height:38px; border:1px solid rgb(171, 167, 167); border-radius:8px" class="mx-auto flex items-center">
                 
                  <img src="{{asset('image/facebook-2815970_1920.jpg') }}" style="width:25px" class="max-auto ms-8">
