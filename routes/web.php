@@ -34,3 +34,10 @@ Route::get('/googlelogin',[GoogleAuthController::class,'redirect'])->name('googl
  
 Route::get('auth/google/callback',[GoogleAuthController::class,'callback']);
 
+Route::get('/gitlogin',[GoogleAuthController::class,'gitredirect'])->name('git-auth');
+ 
+Route::get('auth/github/callback',[GoogleAuthController::class,'gitcallback']);
+
+Route::get('/facelogin',[GoogleAuthController::class,'faceredirect'])->name('face-auth');
+ 
+Route::get('auth/facebook/callback',[GoogleAuthController::class,'facecallback']);
