@@ -18,7 +18,7 @@ class ProfilePolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->can('view_any_profile');
+        return true;
     }
 
     /**
@@ -30,7 +30,7 @@ class ProfilePolicy
      */
     public function view(User $user, Profile $profile): bool
     {
-        return $user->can('view_profile');
+        return true;
     }
 
     /**
@@ -41,7 +41,7 @@ class ProfilePolicy
      */
     public function create(User $user): bool
     {
-        return $user->can('create_profile');
+        return true;
     }
 
     /**
@@ -53,7 +53,7 @@ class ProfilePolicy
      */
     public function update(User $user, Profile $profile): bool
     {
-        return $user->can('update_profile');
+        return true;
     }
 
     /**
@@ -65,7 +65,7 @@ class ProfilePolicy
      */
     public function delete(User $user, Profile $profile): bool
     {
-        return $user->can('delete_profile');
+        return true;
     }
 
     /**

@@ -30,7 +30,7 @@ class FeedBackPolicy
      */
     public function view(User $user, FeedBack $feedBack): bool
     {
-        return $user->can('view_feed::back');
+        return true;
     }
 
     /**

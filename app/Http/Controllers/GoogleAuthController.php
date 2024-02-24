@@ -27,11 +27,11 @@ class GoogleAuthController extends Controller
 
     }
     
-    public function gitcallback( request $request)
+    public function gitcallback()
     {
        
             $gitUser = Socialite::driver('github')->stateless()->user();
-           dd($gitUser);
+        //    dd($gitUser);
 
             //  $user = User::where ('google_id',$gitUser->getid())->first();
 
@@ -40,7 +40,7 @@ class GoogleAuthController extends Controller
             $user->name=$gitUser->getName();
             $user->email=$gitUser->getEmail();
             $user->password=Hash::make($uuid.now());
-            $user->auth_type='github';
+          
             $user->save();
             Auth::login($user);
             return redirect('/dashboard');
@@ -107,5 +107,6 @@ class GoogleAuthController extends Controller
              }
     }
 
-
+    
+    
 }

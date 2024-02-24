@@ -13,8 +13,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Filament\Models\Contracts\HasAvatar;
-
-// use BezhanSalleh\FilamentShield\Traits\HasPanelShield;
+use BezhanSalleh\FilamentShield\Traits\HasPanelShield;
 
 
 class User extends Authenticatable implements HasAvatar, FilamentUser
@@ -25,6 +24,7 @@ class User extends Authenticatable implements HasAvatar, FilamentUser
     use Notifiable;
     use TwoFactorAuthenticatable;
     use HasRoles;
+    use HasPanelShield;
     
     
     

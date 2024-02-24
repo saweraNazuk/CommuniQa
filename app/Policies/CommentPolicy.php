@@ -18,7 +18,7 @@ class CommentPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->can('view_any_comment');
+        return true;
     }
 
     /**

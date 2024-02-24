@@ -18,7 +18,7 @@ class DiscussionThreadPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->can('view_any_discussion::thread');
+        return true;
     }
 
     /**

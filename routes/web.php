@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GoogleAuthController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -29,7 +30,10 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
- 
+Route::get('/view_blog', [PostController::class, 'view_blog']);
+// Route::get('/view_blog/{post:slug}', [PostController::class, 'show'])->name('posts.show');
+Route::get('/blog_details/{id}', [PostController::class,'blog_details']);
+
 Route::get('/googlelogin',[GoogleAuthController::class,'redirect'])->name('google-auth');
  
 Route::get('auth/google/callback',[GoogleAuthController::class,'callback']);
