@@ -1,9 +1,9 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom p-0 ps-5" style="width:100% !important;" style="  height:88px;margin-left:5px; padding-top:5px;">
+<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom p-0 ps-5 fixed-top" style="width:100% !important; position:fixed'; z-index:0.5" style="  height:88px;margin-left:5px; padding-top:5px;">
    <button style="padding: 5px; margin-left: 5px; height:35px; border:none" class="navbar-toggler mt-2" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span style="height: 25px; margin-left:0px" class="navbar-toggler-icon"></span>
     </button>
   <a class="navbar-brand mt-2 " href="#">
-    <img src="{{asset('image/Logo.png')}}" alt="Logo" height="22px" width="148px" style="margin-left: 25px; margin-top:-5px" >
+    <img src="{{asset('image/Logo.png')}}" alt="Logo" height="22px" width="150px" style="margin-left: 25px; margin-top:-5px" >
   </a>
 
   <div class="navbar-nav d-lg-none ml-auto d-flex"  style="display: flex; flex-direction: row;">
@@ -12,12 +12,18 @@
                                 <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10 " class="nav-item" style="display: flex">
                                     
                                     <li class="nav-item" >
-                                       <a class="btn btn-primary" id="logincss" style="width: 48px; font-size:8px;font-weight:bold" href="{{ route('login') }}">Login</a>
+                                       <a style="width: 50px; font-size:8px;font-weight:bold"class="btn btn-primary" id="regiscss" class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                          {{ __('Logout') }}
+                                     </a>
+                                      
+                                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                          @csrf
+                                      </form>
                                     </li>
                                        
-                                        <li class="nav-item" style="text-decoration: none">
-                                          <a class="btn btn-success" id="regiscss" style="width: 52px; font-size:8px;font-weight:bold"  href="{{ route('register') }}">SignUp</a>
-                                       </li>
+                                    <li class="nav-item" style="text-decoration: none">
+                                       {{-- <img id="profile" class="rounded-circle" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" style="height: 15px; width:15px; margin-top:px"> --}}
+                                    </li> 
                                       
                                 </div>
 
@@ -26,57 +32,63 @@
     <ul class="navbar-nav" style="margin-left:px; padding-left: px; ">
       
          <li class="nav-item active" style="border: ;height:80px; ">
-            <a class="nav-link" href="{{ url('/') }}"><i class="fa-solid fa-house" aria-hidden="true" ></i><span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="{{ url('/dashboard') }}"><i class="fa-solid fa-house" aria-hidden="true" ></i><span class="sr-only">(current)</span></a>
          </li>
         <li class="nav-item dropdown" style="height:80px; ">
-            <a class="nav-link" href="#"  role="button" aria-haspopup="true" aria-expanded="true"> <i class="fa-solid fa-users-line"></i></i><span class="nav-label"> <span class="caret"></span></a>
+            <a class="nav-link" href="/chatify"  role="button" aria-haspopup="true" aria-expanded="true"> <i class="fa-solid fa-users-line"></i></i><span class="nav-label"> <span class="caret"></span></a>
           
          </li>
       <li class="nav-item" style=";height:80px;;">
          <a class="nav-link" href="{{ url('/view_blog') }}"><i class="fa-solid fa-newspaper"></i></i></a>
       </li>
       <li class="nav-item" style=";height:80px;">
-         <a class="nav-link" href="blog_list.html"><i class="fa-regular fa-bell" ></i></a>
+         <a class="nav-link" href="/forum"><i class="fa-regular fa-comment-dots" ></i></a>
+        
       </li>
       <li class="nav-item" style=";height:80px;">
-         <a class="nav-link" href="contact.html"><i class="fa-regular fa-comment-dots" ></i></a>
+         <a class="nav-link" href="blog_list.html"><i class="fa-regular fa-bell" ></i></a>
       </li>
-      <li class="nav-item" style="height:80px;">
-         <a class="nav-link" href="#">
-            <i class="fa-regular fa-user"></i>
-         </a>
-      </li>
-      <li class="nav-item" style="height:80px;">
-         <a class="nav-link" href="product.html"><i class="fa-solid fa-newspaper" ></i></i></a>
-      </li>
-      <li class="nav-item" style="height:80px;">
-         <a class="nav-link" href="product.html"><i class="fa-solid fa-newspaper" ></i></i></a>
-      </li>
+      
+    
+   
       <!-- Add more nav items as needed -->
     </ul>
   </div> 
 
     <div class="navbar-nav ml-auto d-none d-lg-flex mt-3 ">
-      <form class="form-inline ml-2" style="border-left: 1px solid rgb(224, 221, 221);">
-         <input class="form-control  mt-2" type="search" placeholder="Find Friends..." aria-label="Search" style="width: 76%">
+      <form  action="search_data" method="GET"  class="form-inline ml-0"  style="margin-left:-5px; border-left: 1px solid rgb(224, 221, 221);" >
+         <input  class="form-control  mt-2" name="query" type="search" placeholder="Search..." aria-label="Search" style="width: 78%">
          <button  class="nav_search-btn" type="submit" style="height: 37px; margin-top:-12px"> <i class="fa fa-search" aria-hidden="true" style="color: white"></i></button>
       </form>
      
                                 <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10 " class="nav-item" style="display: flex">
                                   
-                                    <li class="nav-item" >
+                                    {{-- <li class="nav-item" >
                                        <a class="btn btn-primary" id="logincss" href="{{ route('login') }}">Log in</a>
                                     </li>
-                                        
-                                        <li class="nav-item" style="text-decoration: none">
-                                          <a class="btn btn-success" id="regiscss"  href="{{ route('register') }}">Sign Up</a>
+                                        --}}
+                                       
+                                       <li class="nav-item" >
+                                          {{-- <a style="font-size:14px;margin-right:10%"class="btn btn-primary" id="regiscss" href="{{ route('logout') }}">LogOut</a> --}}
+                                          {{-- <x-app-layout>
+                                          </x-app-layout> --}}
+                                          <a style="font-size:14px;margin-right:"class="btn btn-primary" id="regiscss" class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                             {{ __('Logout') }}
+                                        </a>
+                                         
+                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                             @csrf
+                                         </form>
+                                                          <!-- Settings Dropdown -->
+                
                                        </li>
-                                     
+                                       
                                 </div>
     </div>
 
 </nav>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
   $(document).ready(function () {
      $(document).on('click','.nav-link',function () {
@@ -126,4 +138,3 @@ for (Let i=0; i <menuLength; i++ )
            target.addClass('active') ;
          });
    </script> --}}
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

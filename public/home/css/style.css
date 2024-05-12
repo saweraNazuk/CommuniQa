@@ -18,9 +18,9 @@ body {
 /*header section*/
 
 #logincss{
-  margin-left:5 px;
+  margin-left: px;
   border: 1px solid rgb(27, 140, 216);
-  width: 76px;
+  /* width: 76px; */
   background: transparent;
   color: #000000;
   text-decoration: none;
@@ -29,7 +29,7 @@ body {
   font-size: 14px;
 }
 #regiscss{
-  margin-right: 9px;
+  margin-right: 20px;
   border: 1px solid rgb(27, 140, 216);
   width: 82px;
   background: rgb(27, 140, 216);
@@ -51,8 +51,8 @@ input[type="text"]{
   font-size: 15px;
 }
 ul li{
-  width: 64px;
-  margin-left: 6px;
+  width: 70px;
+  margin-left: 45px;
 }
 ul li.nav-item.active::after {
   /* Your styles for other list items go here */
@@ -74,21 +74,24 @@ ul li.nav-item.active::after {
 
 ul li a{
   margin-top:16px;
-  margin-left: 8px;
+  margin-left: 15px;
  
 }
 .header_section {
     padding: 28px 0;
+ 
 }
 
 .header_section .container-fluid {
    padding-right: 35px;
    /*padding-left: 30px; */
    /* margin-right: 50px;  */
+   position: fixed;
 }
 
 .navbar-brand {
   font-family: 'Playfair Display', serif;
+ 
 }
 
 .navbar-brand span {
@@ -99,6 +102,7 @@ ul li a{
 
 .custom_nav-container {
   padding: 0;
+  
 }
 
 
@@ -176,6 +180,40 @@ ul li a{
 .nav-link a li{
   color: #000;
 }
+/* chat */
+.chat-box {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	/* padding: 10px; */
+	width: 230px;
+  text-align: center;
+  height: 150px;
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+	z-index: 999;
+	border-radius: 10px;
+}
+.chat-box-header {
+	background-color: rgb(27, 140, 216);
+	padding: 5px;
+  color: white;
+	border-bottom: 1px solid #ddd;
+	border-radius: 10px 10px 0 0;
+}
+.chat-box-content {
+	/* padding: 10px; */
+	text-align: center;
+}
+#chat-link {
+	color: #337ab7;
+	text-decoration: none;
+}
+#chat-link:hover {
+	color: #23527c;
+}
+
 
 
 
@@ -237,6 +275,11 @@ width: 80%;
   margin-top: 10px;
   margin-left: 0%;
   width: 100%;}
+ 
+  .footer{
+    display: none;
+  }
+ 
     .blog-post{
       margin-left: 0%;
 margin-top: 10px;
@@ -259,6 +302,7 @@ width: 100%;
           margin-left: -14%;
           
         }
+      
  
 }
 
@@ -268,6 +312,14 @@ width: 100%;
   margin-top: 10px;
   margin-left: 0%;
   width: 100%;}
+.content{
+  font-size: 9px;
+  margin-top: 20px;
+}
+.content h3{
+  margin-top: 50px;
+  font-size: 14px;
+}
     .blog-post{
       margin-left: 0%;
 margin-top: 10px;
@@ -293,9 +345,10 @@ width: 100%;
  
   border-radius: 10px;
 }
-.footer{
+#footer{
   display: flex;
   text-align: center;
+  margin-top: 2px;
  
   
 
@@ -310,6 +363,75 @@ ul h6{
 }
 
 
+/* home */
+
+
+.profile img {
+  height: 55px;
+  width: 55px;
+  margin-top: -15px;
+  margin-left: 10px;
+
+}
+.profile h6 {
+  margin-top: -35px;
+  margin-left: -10px;
+  text-align: center;
+  font-size: small;
+  font-weight: bold;
+}
+.profile p {
+  font-size: small;
+  margin-top: -5px;
+  margin-left: 30px;
+  text-align: center;
+  padding-bottom: 30px;
+
+}
+
+.addaccount {
+  padding-left: 20px;
+  padding-top: 10px;
+  font-size: 13px;
+}
+.Post {
+  border-radius: 20px;
+
+}
+.add {
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-bottom: 12px;
+  font-size: 13px;
+}
+.add span {
+  padding-left: 20px;
+  font-weight: bold;
+}
+#profile {
+  width: 55px;
+  height: 55px;
+  margin: 20px;
+  border-radius: 5px;
+}
+.border-gray {
+  border-style: solid;
+  border-color: rgb(221, 221, 221);
+  border-width: 1px;
+}
+.text-gray-dark {
+  color: rgb(117, 117, 117);
+}
+.hover-dark:hover {
+  background-color: rgb(233, 233, 233);
+  border-radius: 5px;
+}
+
+ .post-profile{
+  width: 60px;
+  height: 60px;
+  padding: 7px;
+}
 
 
 
@@ -325,6 +447,66 @@ ul h6{
 
 
 
+.footer {
+  background-color:transparent;
+  color: #fff;
+  padding: 20px 0;
+  margin-bottom: 0%;
+}
+
+.footer ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer ul li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.footer p {
+  text-align: right;
+}
+
+
+
+/* friemds */
+.friend-page-top-row {
+	padding: 10px;
+	background-color: #ffffff;
+	/* border-bottom: 1px solid #ddd; */
+}
+.profile-picture {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	margin: 0 auto;
+}
+.edit-profile, .my-friends, .friend-requests {
+	margin: 0 10px;
+}
+.friend-page-bottom-row {
+	padding: 20px;
+}
+.my-friends-section {
+	padding: 20px;
+  background-color: #ffffff;
+	/* border: 1px solid #ddd; */
+	/* border-radius: 10px; */
+}
+.friend-picture {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	margin: 0 10px;
+}
+.footer-section {
+	padding: 20px;
+	/* border: 1px solid #ddd; */
+	border-radius: 10px;
+	background-color: #ffffff;
+}
 
 
 

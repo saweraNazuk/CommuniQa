@@ -14,7 +14,7 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Filament\Models\Contracts\HasAvatar;
 use BezhanSalleh\FilamentShield\Traits\HasPanelShield;
-
+use App\Models\Role;
 
 class User extends Authenticatable implements HasAvatar, FilamentUser
 {
@@ -43,8 +43,10 @@ class User extends Authenticatable implements HasAvatar, FilamentUser
         'profile_photo_path',
         'name',
         'email',
+        'id',
         'password',
         'google_id',
+        'roles',
     ];
 
     /**
@@ -81,5 +83,34 @@ class User extends Authenticatable implements HasAvatar, FilamentUser
     {
         return $this->profile_photo_url;
     }
+    public function getRoleNamesAttribute(): ?string
+    {
+        return $this->roles->pluck('name');
+    }
+    // public function role_user() {
+    //     return $this->belongsToMany(Role::class);
+    // }
+
+    // public function author()
+    // {
+    //     return $this->hasMany(ForumPosts::class);
+    // }
+
+    public function friends()
+    {
+        return $this->belongsToMany(User::class, 'user_friends', 'user_id', 'friend_id')
+            ->wherePivot('status', 'accepted');
+    }
+
+    public function friendRequests()
+    {
+        return $this->belongsToMany(User::class, 'user_friends', 'user_id', 'friend_id')
+            ->wherePivot('status', 'pending');
+    }
+
+    public function forumposts()
+{
+    return $this->hasMany(ForumPosts::class);
+}
 }
 

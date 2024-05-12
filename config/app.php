@@ -172,6 +172,11 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
+        \Chatify\ChatifyServiceProvider::class,
+        TeamTeaTime\Forum\ForumServiceProvider::class,
+        Jorenvh\Share\Providers\ShareServiceProvider::class,
+
+
     ])->toArray(),
 
     /*
@@ -187,6 +192,8 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
+        'Chatify' => Chatify\Facades\ChatifyMessenger::class,
+        'Share' => Jorenvh\Share\ShareFacade::class,
     ])->toArray(),
 
 ];

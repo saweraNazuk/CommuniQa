@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Laravel\Scout\Searchable;
+use Laravel\Scout\Attributes\SearchUsingPrefix;
 
 class Post extends Model
 {
@@ -45,4 +47,13 @@ public function scopeFeatured($query)
 {
 $query->where('featured', true);
 }
+
+// #[SearchUsingPrefix(['status'])]
+// public function toSearchableArray()
+// {
+//     return [
+//        'title' => $this->title,
+//        'content' => $this->content,
+//     ];
+// }
 }

@@ -34,14 +34,16 @@ class UserResource extends Resource
                 Forms\Components\TextInput::make('password')
                     ->password()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('current_team_id')
-                    ->numeric(),
+              
                 Forms\Components\TextInput::make('profile_photo_path')
                     ->maxLength(2048),
                 Forms\Components\TextInput::make('google_id')
                     ->maxLength(255),
-                Forms\Components\TextInput::make('role')
-                    ->maxLength(255),
+               Forms\Components\Select::make('roles')
+                    ->relationship('roles', 'name')
+                    ->multiple()
+                    ->preload()
+                    ->searchable(),
                 Forms\Components\TextInput::make('auth_type')
                     ->required()
                     ->maxLength(255)
@@ -60,7 +62,7 @@ class UserResource extends Resource
                 Tables\Columns\ImageColumn::make('profile_photo_path')
                  ->label('Avatar')
                  ->defaultImageUrl(url('storage/profile-photos/R (2).png'))
-                     ->square()
+                     ->circular()
                      ->searchable(),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
@@ -69,14 +71,13 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('email_verified_at')
                     ->dateTime()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('current_team_id')
-                    ->numeric()
-                    ->sortable(),
+               
                
                 Tables\Columns\TextColumn::make('google_id')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('role')
-                    ->searchable(),
+                Tables\Columns\TextColumn::make('name')
+                ->label('Roles')
+                ->badge()->separator(', '),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
